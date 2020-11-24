@@ -1,5 +1,4 @@
 body{
-	background: rgb(238,174,202);
 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
@@ -21,6 +20,7 @@ tr, td {
    border: 1px solid #09274b;
    text-align: center;
 }
+
 .butt{
 	position: absolute;
 	right: 100px;
@@ -41,7 +41,7 @@ tr, td {
 
 } 
 .bttn:hover { background: rgba(255,255,255,.2); }
-.bttn:active { background: white; }
+.btn:active { background: white; }
 
 /*
 *    Общие стили
@@ -184,4 +184,3 @@ form button {
     font-size: 1rem;
     color: #444;
 }
-

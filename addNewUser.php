@@ -1,15 +1,19 @@
 <?php
-// Start the session
 session_start();
-?>
+require_once "db.php";
 
- <?php 
- 
-	require_once "db.php"; //підключення скрипту
-	if (count($_POST)>0) {
+$sql = "INSERT INTO `users`(`first_name`, `last_name`, `password`, `login`, `id_role`)
+VALUES ('{$_POST['first_name']}','{$_POST['last_name']}','{$_POST['password']}','{$_POST['login']}', '{$_POST['id_role']}')";
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+
+  	if ($_SESSION["id_role"]==1){
+  		header('Location: main.php');  	
+  	}
+  	else{
+  		if (count($_POST)>0) {
 		//potential sql injection, 
 		
-
 		$query = "SELECT * FROM `users` WHERE login = '{$_POST['login']}' AND password = '{$_POST['password']}'";
 		$res = mysqli_query ($conn,$query);
 		$row = mysqli_fetch_array($res);
@@ -23,12 +27,13 @@ session_start();
 			$_SESSION["login"] = false;
 			echo "Invalid password";
 		}
+	}
 }
 
-	
-	/*if(!strcmp($login,$_POST["login"]) && !strcmp($password,$_POST["password"]) ){
-		$_SESSION["auth"] = true;
-}else $_SESSION["auth"] = false;*/
+
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
 	header('Location: main.php');
+
 ?>
- 

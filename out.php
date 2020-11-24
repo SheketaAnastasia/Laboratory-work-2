@@ -2,5 +2,7 @@
 
 	$_SESSION["id_role"] = false;
 	$_SESSION["login"] = false;
-	header('Location: mainDontAuth.php');
+	$_SESSION["id"] = false;
+
+	header('Location: main.php');
 	?>
